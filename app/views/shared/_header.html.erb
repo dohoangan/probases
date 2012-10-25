@@ -4,8 +4,14 @@
 			<%= link_to "Probases", root_path, id: "logo" %> 
 			<nav>
 				<ul class="nav span7">
-					<li><%= link_to "Home", root_path %></li> 
-					<li><%= link_to "Help", help_path %></li> 
+					<li><%= link_to "How it Works!", help_path %></li> 
+					<% if user_signed_in? %>
+						<li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+						<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+					<% else %>
+						<li><%= link_to "Sign up", new_user_registration_path %></li>
+						<li><%= link_to "Login", new_user_session_path %></li>
+					<% end %>
 				</ul>
 				<form class="navbar-search pull-right">
   				<input type="text" class="search-query" placeholder="Search">
